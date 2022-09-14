@@ -20,23 +20,35 @@ public class PlayerController : MonoBehaviour
     public float variableJumpHeightMultiplier = 0.5f;
     public float wallHopForce;
     public float wallJumpForce;
+    public float ledgeClimbXOffset1 = 0f;
+    public float ledgeClimbYOffset1 = 0f;
+    public float ledgeClimbXOffset2 = 0f;
+    public float ledgeClimbYOffset2 = 0f;
 
     public Vector2 wallHopDirection;
     public Vector2 wallJumpDirection;
 
     public Transform groundCheck;
     public Transform wallCheck;
+    public Transform ledgeCheck;
     
     public LayerMask whatIsGround;
     
-    public int amountOfJumps = 1;
+    public int amountOfJumps = 1; 
     private bool isWallSliding;
     private bool isTouchingWall;
     private bool canJump;
     private bool isGrounded;
     private bool isFacingRight = true;
     private bool isWalking;
-    // Start is called before the first frame update
+    private bool isTouchingLedge;
+    private bool canClimbLedge = false;
+    private bool ledgeDetected;
+    private Vector2 ledgePosBot;
+    private Vector2 ledgePos1;
+    private Vector2 ledgePos2;
+    
+    // -------------------------------------- Start is called before the first frame update -----------------------------------------
 
     void Start()
     {
@@ -47,7 +59,7 @@ public class PlayerController : MonoBehaviour
         wallJumpDirection.Normalize();
     }
 
-    // Update is called once per frame
+    // --------------------------------------- Update is called once per frame ------------------------------------------------------
     void Update()
     {
         CheckInput();
@@ -55,6 +67,7 @@ public class PlayerController : MonoBehaviour
         UpdateAnimation();
         CheckIfCanJump();
         CheckIfWallSliding();
+        CheckLedgeClimb();
     }
     private void FixedUpdate()
     {
@@ -63,7 +76,7 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckIfWallSliding()
     {
-        if(isTouchingWall && !isGrounded && rb.velocity.y <0)
+        if(isTouchingWall && !isGrounded && rb.velocity.y <0 && !canClimbLedge)
         {
             isWallSliding = true;
         }
@@ -73,10 +86,48 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    private void CheckLedgeClimb()
+    {
+        if (ledgeDetected && !canClimbLedge)
+        {
+            canClimbLedge = true;
+            if (isFacingRight)
+            {
+                ledgePos1 = new Vector2(Mathf.Floor(ledgePosBot.x + wallCheckDistance) - ledgeClimbXOffset1, Mathf.Floor(ledgePosBot.y) + ledgeClimbYOffset1);                       
+                ledgePos2 = new Vector2(Mathf.Floor(ledgePosBot.x + wallCheckDistance) + ledgeClimbXOffset2, Mathf.Floor(ledgePosBot.y) + ledgeClimbYOffset2);                       
+            }
+            else
+            {
+                ledgePos1 = new Vector2(Mathf.Ceil(ledgePosBot.x - wallCheckDistance) + ledgeClimbXOffset1, Mathf.Floor(ledgePosBot.y) + ledgeClimbYOffset1);
+                ledgePos2 = new Vector2(Mathf.Ceil(ledgePosBot.x - wallCheckDistance) - ledgeClimbXOffset2, Mathf.Floor(ledgePosBot.y) + ledgeClimbYOffset2);
+            }
+
+            anim.SetBool("canClimbLedge", canClimbLedge);
+        }
+         if (canClimbLedge)
+         {
+             transform.position = ledgePos1;
+         }
+
+    }
+    public void FinishLedgeClimb()
+    {
+        canClimbLedge = false;
+        transform.position = ledgePos2;
+        ledgeDetected = false;
+        anim.SetBool("canClimbLedge", canClimbLedge);
+    }
     private void CheckSurroundings()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         isTouchingWall = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
+        isTouchingLedge = Physics2D.Raycast(ledgeCheck.position, transform.right, wallCheckDistance, whatIsGround); // ledge check as origin , transform.right as a direction, 
+                                                                                                                   // wallcheckdistance as a distance  whatIsGround as layer mask
+    if(isTouchingWall && !isTouchingLedge && !ledgeDetected)
+        {
+            ledgeDetected = true;
+            ledgePosBot = wallCheck.position;
+        }
     }
     private void CheckIfCanJump()
     {
