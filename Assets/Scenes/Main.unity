@@ -9475,7 +9475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884911489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.74, y: 2.39, z: 0}
+  m_LocalPosition: {x: 0.009, y: 0.408, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40459,10 +40459,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1426829822}
-  - component: {fileID: 1426829821}
   - component: {fileID: 1426829820}
-  - component: {fileID: 1426829819}
   - component: {fileID: 1426829823}
+  - component: {fileID: 1426829821}
+  - component: {fileID: 1426829819}
   - component: {fileID: 1426829824}
   m_Layer: 0
   m_Name: Player
@@ -40512,11 +40512,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 5867be142c73df74d959b35fe88c1e74, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &1426829821
 SpriteRenderer:
@@ -40600,19 +40600,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a5aa294b0ce774eb62f9689019f38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  wallCheckDistance: 1
+  movementSpeed: 9
+  wallCheckDistance: 0.65
   groundCheckRadius: 0.3
-  wallSlideSpeed: 3
+  wallSlideSpeed: 1
   movementForceInAir: 50
   airDragMultiplier: 1
   variableJumpHeightMultiplier: 0.5
   wallHopForce: 10
   wallJumpForce: 20
+  jumpTimerSet: 0.15
   ledgeClimbXOffset1: 0.3
   ledgeClimbYOffset1: 0
   ledgeClimbXOffset2: 0.5
-  ledgeClimbYOffset2: 0.5
+  ledgeClimbYOffset2: 2
+  turnTimerSet: 0.1
+  wallJumpTimerSet: 0.5
   wallHopDirection: {x: 1, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
   groundCheck: {fileID: 585478674}
@@ -40621,7 +40624,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  amountOfJumps: 2
+  amountOfJumps: 3
 --- !u!95 &1426829824
 Animator:
   serializedVersion: 4
