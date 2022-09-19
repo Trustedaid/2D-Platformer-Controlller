@@ -9,8 +9,8 @@ public class PlayerAfterImageSprite : MonoBehaviour
     private float timeActivated;
     private float alpha;
     [SerializeField]
-    private float alphaSet = 0.8f;
-    private float alphaMultiplier = 0.85f;
+    private float alphaSet = 0.8f; 
+    private float alphaMultiplier = 0.85f; // smaller numbers are faster sprite the fade (decreasing alpha over time)
 
 
     private Transform player;
