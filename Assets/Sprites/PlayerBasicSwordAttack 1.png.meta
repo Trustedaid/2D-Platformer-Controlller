@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 840c52f05c31d644fa3a0d186d1de015
+guid: 37ce7692c713c844aac9ba8134ce70d7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,70 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 517ed7adedce9004595734b0593201c3
-      internalID: -1080053365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CombatDummy_DeathSprites_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 688b627a0f3783647aa06b3777eb7716
-      internalID: 1479090298
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CombatDummy_DeathSprites_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c00a322e9a6924408153b7f4cdb5345
-      internalID: 182512738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CombatDummy_DeathSprites_3
+      name: PlayerBasicSwordAttack 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -193,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 424e2730b303ec844910e14ea245650f
-      internalID: 1889538401
+      spriteID: 911622ccb82e9f8478de7b20384f2237
+      internalID: 1422054334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_4
+      name: PlayerBasicSwordAttack 1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -214,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70b0ff97be1935c4289ef2750be76090
-      internalID: 229927162
+      spriteID: 4b11eeeee42954c4e81b1ce653ee3f3a
+      internalID: 364550857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_5
+      name: PlayerBasicSwordAttack 1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -235,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9261e7b91c6b0e64a88ad89a3ab7d22f
-      internalID: -1713553451
+      spriteID: 99fa250d37f5e9341a368302cd7db884
+      internalID: -608635185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_6
+      name: PlayerBasicSwordAttack 1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -256,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1d768599a5a25d4283cf5916516bb28
-      internalID: 2029054746
+      spriteID: 2932357e8c47e424082d307815c90dba
+      internalID: 1287606819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_7
+      name: PlayerBasicSwordAttack 1_4
       rect:
         serializedVersion: 2
         x: 256
@@ -277,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45a36cc74fa07af418e23e0ffbb78b86
-      internalID: 1843747970
+      spriteID: 7d35c94e77cc0eb419098c01dc681ed9
+      internalID: 1080191380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_8
+      name: PlayerBasicSwordAttack 1_5
       rect:
         serializedVersion: 2
         x: 0
@@ -298,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be8318b5329f13248bc1dc7d7aa92105
-      internalID: -970612813
+      spriteID: ddd243eb31071934f815e8f87af99591
+      internalID: 1912970094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_9
+      name: PlayerBasicSwordAttack 1_6
       rect:
         serializedVersion: 2
         x: 64
@@ -319,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cba7b41286352b642958a5e98db1d6da
-      internalID: -191811434
+      spriteID: 4cfcdea63529ead48a82fcb4db83fd04
+      internalID: 37632522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_10
+      name: PlayerBasicSwordAttack 1_7
       rect:
         serializedVersion: 2
         x: 128
@@ -340,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3288e031269b86c4980618b3b061f251
-      internalID: -1712341565
+      spriteID: c65f998b37ab17b45acd827f72749dd6
+      internalID: -1771517303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_11
+      name: PlayerBasicSwordAttack 1_8
       rect:
         serializedVersion: 2
         x: 192
@@ -361,14 +298,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ea9911d740c60e4392549a9d5bb6670
-      internalID: -1718714145
+      spriteID: fee11a713bb44cd4798b651a03832446
+      internalID: 1480663339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CombatDummy_DeathSprites_12
+      name: PlayerBasicSwordAttack 1_9
       rect:
         serializedVersion: 2
         x: 256
@@ -382,8 +319,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8608e4bd0ced38e4184caddf84d91ffe
-      internalID: 333525661
+      spriteID: 055dbbd64a257f646b56b8d0bd4c4f6b
+      internalID: 1638605233
       vertices: []
       indices: 
       edges: []
@@ -399,19 +336,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CombatDummy_DeathSprites_3: 1889538401
-      CombatDummy_DeathSprites_6: 2029054746
-      CombatDummy_DeathSprites_11: -1718714145
-      CombatDummy_DeathSprites_1: 1479090298
-      CombatDummy_DeathSprites_0: -1080053365
-      CombatDummy_DeathSprites_5: -1713553451
-      CombatDummy_DeathSprites_7: 1843747970
-      CombatDummy_DeathSprites_12: 333525661
-      CombatDummy_DeathSprites_9: -191811434
-      CombatDummy_DeathSprites_2: 182512738
-      CombatDummy_DeathSprites_4: 229927162
-      CombatDummy_DeathSprites_10: -1712341565
-      CombatDummy_DeathSprites_8: -970612813
+      PlayerBasicSwordAttack 1_2: -608635185
+      PlayerBasicSwordAttack 1_5: 1912970094
+      PlayerBasicSwordAttack 1_9: 1638605233
+      PlayerBasicSwordAttack 1_1: 364550857
+      PlayerBasicSwordAttack 1_7: -1771517303
+      PlayerBasicSwordAttack 1_6: 37632522
+      PlayerBasicSwordAttack 1_4: 1080191380
+      PlayerBasicSwordAttack 1_0: 1422054334
+      PlayerBasicSwordAttack 1_8: 1480663339
+      PlayerBasicSwordAttack 1_3: 1287606819
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

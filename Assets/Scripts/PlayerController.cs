@@ -266,6 +266,10 @@ public class PlayerController : MonoBehaviour
         PlayerAfterImagePool.Instance.GetFromPool();
         lastImageXpos = transform.position.x;
     }
+    public int GetFacingDirection()
+    {
+        return facingDirection;
+    }
    private void CheckDash()
     {
         if (isDashing)
