@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float wallJumpTimer;
     private float dashTimeLeft;
     private float lastImageXpos;
+    private float jumpForce = 11f;
     private float lastDash = -100f;
    
 
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private int lastWallJumpDirection;
 
     public float movementSpeed = 10f; // publicly shows that character movement speed in panel
-    private float jumpForce = 11f;
+    
     public float wallCheckDistance;
     public float groundCheckRadius;
     public float wallSlideSpeed;
@@ -142,6 +143,7 @@ public class PlayerController : MonoBehaviour
     }
     public void FinishLedgeClimb()
     {
+        Debug.Log("xxx");
         canClimbLedge = false;
         transform.position = ledgePos2;
         canMove = true;

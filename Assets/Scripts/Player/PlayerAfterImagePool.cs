@@ -8,7 +8,7 @@ public class PlayerAfterImagePool : MonoBehaviour
     private GameObject afterImagePrefab;
     private Queue<GameObject> availableObjects = new Queue<GameObject>();
 
-    public static PlayerAfterImagePool Instance { get; private set; } // singleton design pattern
+    public static PlayerAfterImagePool Instance { get; private set; } // singleton design pattern "araþtýr"
 
     private void Awake()
     {
