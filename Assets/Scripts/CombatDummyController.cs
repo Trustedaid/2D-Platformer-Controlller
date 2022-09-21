@@ -8,6 +8,8 @@ public class CombatDummyController : MonoBehaviour
     private float maxHealth, knockbackSpeedX, knockbackSpeedY, knockbackDuration, knockbackDeathSpeedX, knockbackDeathSpeedY, deathTorque;
     [SerializeField]
     private bool applyKnockback;
+    [SerializeField]
+    private GameObject hitParticle;
 
 
 
@@ -29,8 +31,8 @@ public class CombatDummyController : MonoBehaviour
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
 
         aliveGO = transform.Find("Alive").gameObject; // instead of looking through the whole hiearachy it will just look at the children game objects of the object
-        brokenTopGO = transform.Find("Broken Top").gameObject; 
-        brokenBotGO = transform.Find("Broken Bot").gameObject;
+        brokenTopGO = transform.Find("Broken Top").gameObject;  // instead of looking through the whole hiearachy it will just look at the children game objects of the object
+        brokenBotGO = transform.Find("Broken Bottom").gameObject; // instead of looking through the whole hiearachy it will just look at the children game objects of the object
 
         aliveAnim = aliveGO.GetComponent<Animator>();
         rbAlive = aliveGO.GetComponent<Rigidbody2D>();
@@ -52,6 +54,8 @@ public class CombatDummyController : MonoBehaviour
         currentHealth -= amount;
         playerFacingDirection = pc.GetFacingDirection();
 
+        Instantiate(hitParticle, aliveGO.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
+
         if(playerFacingDirection == 1)
         {
             playerOnLeft = true;
@@ -71,6 +75,7 @@ public class CombatDummyController : MonoBehaviour
         if(currentHealth <= 0.0f)
         {
             // Die
+            Die();
         }
 
     }
