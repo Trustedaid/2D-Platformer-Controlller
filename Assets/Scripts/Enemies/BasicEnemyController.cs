@@ -52,6 +52,7 @@ public class BasicEnemyController : MonoBehaviour
         alive = transform.Find("Alive").gameObject;
         aliveRb = alive.GetComponent<Rigidbody2D>();
 
+        currentHealth = maxHealth;
         facingDirection = 1;
         aliveAnim = alive.GetComponent<Animator>();
     }

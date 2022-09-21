@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckIfWallSliding()
     {
-        if(isTouchingWall && movementInputDirection == facingDirection && rb.velocity.y < 0 && !canClimbLedge)
+        if (isTouchingWall && movementInputDirection == facingDirection && rb.velocity.y < 0 && !canClimbLedge)
         {
             isWallSliding = true;
         }
@@ -143,7 +143,6 @@ public class PlayerController : MonoBehaviour
     }
     public void FinishLedgeClimb()
     {
-        Debug.Log("xxx");
         canClimbLedge = false;
         transform.position = ledgePos2;
         canMove = true;
@@ -230,7 +229,7 @@ public class PlayerController : MonoBehaviour
             if(!isGrounded && movementInputDirection != facingDirection)
             {
                 canMove = false;
-                canFlip = false;
+                canFlip = true;
 
                 turnTimer = turnTimerSet;
             }
