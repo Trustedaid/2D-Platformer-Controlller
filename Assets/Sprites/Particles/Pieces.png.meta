@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 13b3a50052b08434fb119692aa1b83b2
+guid: c4ad873d3b02e7045a3e7c403e84cbc8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,34 +116,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HitParticles_0
+      name: Pieces_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 22
+        y: 22
+        width: 6
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4697401804f834b4cb691174de024f5c
-      internalID: 690476917
+      spriteID: 20a60f7f8c40a064b8654cad758b31ad
+      internalID: 959807354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HitParticles_1
+      name: Pieces_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
+        x: 29
+        y: 31
+        width: 1
+        height: 1
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,50 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10fa3135478317047be747c5076ddda1
-      internalID: -708697062
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HitParticles_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60707e7c20b253f4c8a12ef1a6632db5
-      internalID: 1188905082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HitParticles_3
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8b1c2839eb420c4fabd190d5b91469c
-      internalID: -1249108109
+      spriteID: 5749c77c0aa5c9a44a9f3fc6727f7a6a
+      internalID: -1378721854
       vertices: []
       indices: 
       edges: []
@@ -210,10 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HitParticles_3: -1249108109
-      HitParticles_1: -708697062
-      HitParticles_0: 690476917
-      HitParticles_2: 1188905082
+      Pieces_1: -1378721854
+      Pieces_0: -96995832
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

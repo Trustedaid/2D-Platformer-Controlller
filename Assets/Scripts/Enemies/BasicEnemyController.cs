@@ -29,8 +29,13 @@ public class BasicEnemyController : MonoBehaviour
 
     [SerializeField]
     private Vector2 knockbackSpeed;
-    
-    
+    [SerializeField]
+    private GameObject
+        hitParticle,
+        deathChunkParticle,
+        deathBloodParticle;
+
+
     private float currentHealth,
         knockbackStartTime;
 
@@ -123,6 +128,8 @@ public class BasicEnemyController : MonoBehaviour
     private void EnterDeadState()
     {
         // Spawn Chunks and Blood Particle
+        Instantiate(deathChunkParticle, alive.transform.position, deathChunkParticle.transform.rotation);
+        Instantiate(deathBloodParticle, alive.transform.position, deathBloodParticle.transform.rotation);
         Destroy(gameObject);
 
     }
@@ -138,6 +145,7 @@ public class BasicEnemyController : MonoBehaviour
    private void Damage(float[]attackDetails) // IF we need multiple parameters we need to use like this instead of     " sending message function [allows 1 parameter] "
     {
         currentHealth -= attackDetails[0];
+        Instantiate(hitParticle, alive.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
 
         if (attackDetails[1] > alive.transform.position.x)
         {
