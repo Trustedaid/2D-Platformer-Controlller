@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private float lastImageXpos;
     private float jumpForce = 11f;
     private float lastDash = -100f;
+    private float knockbackStartTime;
+    [SerializeField]
+    private float knockbackDuration;
    
 
     private Rigidbody2D rb; // defines Rigidbody as rb
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed;
     public float distanceBetweenImages;
     public float dashCoolDown;
+ 
 
 
 
@@ -71,6 +75,9 @@ public class PlayerController : MonoBehaviour
     private bool canFlip;
     private bool hasWallJumped;
     private bool isDashing;
+    private bool knockback;
+    [SerializeField]
+    private Vector2 knockbackSpeed;
     
     private Vector2 ledgePosBot;
     private Vector2 ledgePos1;
@@ -98,6 +105,7 @@ public class PlayerController : MonoBehaviour
         CheckLedgeClimb();
         CheckJump();
         CheckDash();
+        CheckKnockback();
     }
     private void FixedUpdate()
     {
@@ -115,6 +123,24 @@ public class PlayerController : MonoBehaviour
             isWallSliding = false;
         }
 
+    }
+    public bool GetDashStatus()
+    {
+        return isDashing;
+    }
+    public void Knockback(int direction)
+    {
+        knockback = true;
+        knockbackStartTime = Time.time;
+        rb.velocity = new Vector2(knockbackSpeed.x * direction, knockbackSpeed.y);
+    }
+    public void CheckKnockback()
+    {
+        if(Time.time >= knockbackStartTime + knockbackDuration && knockback)
+        {
+            knockback = false;
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+        }
     }
     private void CheckLedgeClimb()
     {
@@ -279,7 +305,7 @@ public class PlayerController : MonoBehaviour
             {
 
             canMove = false;
-            canFlip = false;
+            canFlip = true;
             rb.velocity = new Vector2(dashSpeed * facingDirection, 0);
             dashTimeLeft -= Time.deltaTime;
 
@@ -370,11 +396,11 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyMovement()
     {
-         if (!isGrounded && !isWallSliding && movementInputDirection == 0)
+         if (!isGrounded && !isWallSliding && movementInputDirection == 0 && !knockback)
         {
             rb.velocity = new Vector2(rb.velocity.x * airDragMultiplier, rb.velocity.y);
         }
-         else if(canMove)
+         else if(canMove && !knockback)
         {
             rb.velocity = new Vector2(movementSpeed * movementInputDirection, rb.velocity.y);
         }
@@ -399,7 +425,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Flip()
     {
-        if(!isWallSliding && canFlip)
+        if(!isWallSliding && canFlip && !knockback)
         {
             facingDirection *= -1; // changing 1 to 1 everytime we flip the character
             isFacingRight = !isFacingRight;
