@@ -2,32 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveState : State
+public class AttackState : State
 {
-    protected D_MoveState stateData;
+    protected Transform attackPosition;
 
-    protected bool isDetectingWall;
-    protected bool isDetectingLedge;
+    protected bool isAnimationFinished;
     protected bool isPlayerInMinAgroRange;
-    public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
-    {
-        this.stateData = stateData;
 
+    public AttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition) : base(entity, stateMachine, animBoolName)
+    {
+        this.attackPosition = attackPosition;
     }
 
     public override void DoChecks()
     {
         base.DoChecks();
-
-        isDetectingLedge = entity.CheckLedge();
-        isDetectingWall = entity.CheckWall();
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
     }
 
     public override void Enter()
     {
         base.Enter();
-        entity.SetVelocity(stateData.movementSpeed);
+        entity.atsm.attackState = this;
+        isAnimationFinished = false;
+        entity.SetVelocity(0f);
 
     }
 
@@ -44,5 +42,15 @@ public class MoveState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public virtual void TriggerAttack()
+    {
+
+    }
+    public virtual void FinishAttack()
+    {
+        isAnimationFinished = true;
+
     }
 }

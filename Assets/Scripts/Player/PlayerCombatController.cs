@@ -18,15 +18,14 @@ public class PlayerCombatController : MonoBehaviour
 
     private float lastInputTime = Mathf.NegativeInfinity; // responsible storing the last time we attempted to attack
 
-    private float[] attackDetails = new float[2];
-
+    private AttackDetails attackDetails;
     private Animator anim;
 
     private PlayerController PC;
 
     private PlayerStats PS;
 
-   private void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetBool("canAttack", combatEnabled);
@@ -53,7 +52,7 @@ public class PlayerCombatController : MonoBehaviour
     }
     private void CheckAttacks()
     {
-        if(gotInput)
+        if (gotInput)
         {
             // perform attack1
             if (!isAttacking)
@@ -66,7 +65,7 @@ public class PlayerCombatController : MonoBehaviour
                 anim.SetBool("isAttacking", isAttacking);
             }
         }
-        if(Time.time >= lastInputTime + inputTimer)
+        if (Time.time >= lastInputTime + inputTimer)
         {
             // Wait for new Input
             gotInput = false;
@@ -77,10 +76,10 @@ public class PlayerCombatController : MonoBehaviour
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attack1HitBoxPos.position, attack1Radius, whatIsDamageable);
 
-        attackDetails[0] = attack1Damage;
-        attackDetails[1] = transform.position.x;
+        attackDetails.damageAmount = attack1Damage;
+        attackDetails.position = transform.position;
 
-        foreach(Collider2D collider in detectedObjects)
+        foreach (Collider2D collider in detectedObjects)
         {
             collider.transform.parent.SendMessage("Damage", attackDetails);
             //Instantiate hit particle
@@ -92,14 +91,14 @@ public class PlayerCombatController : MonoBehaviour
         anim.SetBool("isAttacking", isAttacking);
         anim.SetBool("attack1", false);
     }
-    private void Damage(float[] attackDetails)
+    private void Damage(AttackDetails attackDetails)
     {
         if (!PC.GetDashStatus())
         {
             int direction;
 
-            PS.DecreaseHealth(attackDetails[0]);
-            if (attackDetails[1] < transform.position.x)
+            PS.DecreaseHealth(attackDetails.damageAmount);
+            if (attackDetails.position.x < transform.position.x)
             {
                 direction = 1;
             }
@@ -109,7 +108,7 @@ public class PlayerCombatController : MonoBehaviour
             }
             PC.Knockback(direction);
         }
-       
+
     }
     private void OnDrawGizmos()
     {

@@ -21,6 +21,7 @@ public class State
         startTime = Time.time;
         // function get called whatever state it is it gonna store the start time && we can reference this start time without having set the start time
         entity.anim.SetBool(animBoolName, true);
+        DoChecks();
     }
     public virtual void Exit()
     {
@@ -31,6 +32,10 @@ public class State
 
     }
     public virtual void  PhysicsUpdate()
+    {
+        DoChecks();
+    }
+    public virtual void DoChecks()
     {
 
     }
