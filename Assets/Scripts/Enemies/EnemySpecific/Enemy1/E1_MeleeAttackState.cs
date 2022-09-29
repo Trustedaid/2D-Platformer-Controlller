@@ -38,7 +38,7 @@ public class E1_MeleeAttackState : MeleeAttackState
         {
             if (isPlayerInMinAgroRange)
             {
-                stateMachine.ChangeState(enemy.playerDetectedState);
+                stateMachine.ChangeState(enemy.playerDetectedState);  // DÜZGÜN HALÝ
             }
             else
             {
@@ -49,7 +49,7 @@ public class E1_MeleeAttackState : MeleeAttackState
     /*
     if (isAnimationFinished)
     {
-        stateMachine.ChangeState(enemy.playerDetectedState);
+        stateMachine.ChangeState(enemy.playerDetectedState);                        HATALI KISIM
     }
     else
     {
