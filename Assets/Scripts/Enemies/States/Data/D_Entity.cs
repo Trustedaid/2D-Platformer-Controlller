@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class D_Entity : ScriptableObject
 {
+    public float maxHealth = 30f;
+
+    public float damageHopSpeed = 3f;
+
     public float wallCheckDistance = 0.2f;
     public float ledgeCheckDistance = 0.4f;
 

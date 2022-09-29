@@ -33,15 +33,29 @@ public class E1_MeleeAttackState : MeleeAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
         if (isAnimationFinished)
         {
-            stateMachine.ChangeState(enemy.playerDetectedState);
-        }
-        else
-        {
-            stateMachine.ChangeState(enemy.lookForPlayerState);
+            if (isPlayerInMinAgroRange)
+            {
+                stateMachine.ChangeState(enemy.playerDetectedState);
+            }
+            else
+            {
+                stateMachine.ChangeState(enemy.lookForPlayerState);
+            }
         }
     }
+    /*
+    if (isAnimationFinished)
+    {
+        stateMachine.ChangeState(enemy.playerDetectedState);
+    }
+    else
+    {
+        stateMachine.ChangeState(enemy.lookForPlayerState);
+    }
+}*/
 
     public override void PhysicsUpdate()
     {

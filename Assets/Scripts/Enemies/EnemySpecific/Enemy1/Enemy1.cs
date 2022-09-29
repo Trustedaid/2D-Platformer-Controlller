@@ -42,7 +42,7 @@ public class Enemy1 : Entity
 
         stateMachine.Initialize(moveState);
     }
-    public virtual void OnDrawGizmos()
+    public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
 

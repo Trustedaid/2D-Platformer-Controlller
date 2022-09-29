@@ -22,11 +22,16 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform playerCheck;
 
+    private float currentHealth;
+
+    private int lastDamageDirection;
+
     private Vector2 velocityWorkspace;
 
     public virtual void Start()
     {
         facingDirection = 1;
+        currentHealth = entityData.maxHealth;
 
         aliveGO = transform.Find("Alive").gameObject;
         rb = aliveGO.GetComponent<Rigidbody2D>();
@@ -72,6 +77,28 @@ public class Entity : MonoBehaviour
     {
         return Physics2D.Raycast(playerCheck.position, aliveGO.transform.right, entityData.closeRangeActionDistance, entityData.whatIsPlayer);
     }
+
+    public virtual void DamageHop(float velocity)
+    {
+        velocityWorkspace.Set(rb.velocity.x, velocity);
+        rb.velocity = velocityWorkspace;
+    }
+    public virtual void Damage(AttackDetails attackDetails)
+    {
+        currentHealth -= attackDetails.damageAmount;
+
+        DamageHop(entityData.damageHopSpeed);
+
+        if(attackDetails.position.x > aliveGO.transform.position.x)
+        {
+            lastDamageDirection = -1;
+        }
+        else
+        {
+            lastDamageDirection = 1;
+        }
+    }
+
     public virtual void Flip()
     {
         facingDirection *= -1;
