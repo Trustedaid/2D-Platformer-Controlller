@@ -9239,12 +9239,14 @@ MonoBehaviour:
   wallCheck: {fileID: 195952045}
   ledgeCheck: {fileID: 2008823892}
   playerCheck: {fileID: 1583411393}
+  groundCheck: {fileID: 900428930}
   idleStateData: {fileID: 11400000, guid: 0ab26d2d988d02848b476dc93ee990d7, type: 2}
   moveStateData: {fileID: 11400000, guid: 605f68b23f8816c4db2fdfceba4c36a6, type: 2}
   playerDetectedData: {fileID: 11400000, guid: 586d9d4505dbd8c43a1dabe986c1ebd9, type: 2}
   chargeStateData: {fileID: 11400000, guid: 4630a99d6a01bb440b155c63ed20cb4d, type: 2}
   lookForPlayerStateData: {fileID: 11400000, guid: e89d338decbcf6d4792d23f58bd0707a, type: 2}
   meleeAttackStateData: {fileID: 11400000, guid: ee11ddf49d8e7094db55d4451df6eb1f, type: 2}
+  StunStateData: {fileID: 11400000, guid: 0a0ed4c99d0382746895834657a80cba, type: 2}
   meleeAttackPosition: {fileID: 1629355897}
 --- !u!1 &808208664
 GameObject:
@@ -9538,6 +9540,37 @@ Transform:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &900428929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900428930}
+  m_Layer: 7
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &900428930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900428929}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1440415841}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1075679212
 GameObject:
@@ -40581,6 +40614,7 @@ Transform:
   - {fileID: 1601396689}
   - {fileID: 1583411393}
   - {fileID: 1629355897}
+  - {fileID: 900428930}
   m_Father: {fileID: 755473000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41712,6 +41746,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1994666074404971624, guid: 55f18be38e90d6e4ba10a8ac0194c906, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1994666074404972432, guid: 55f18be38e90d6e4ba10a8ac0194c906, type: 3}
       propertyPath: m_Name
       value: Player

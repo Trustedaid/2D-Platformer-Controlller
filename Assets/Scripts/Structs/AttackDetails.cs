@@ -6,5 +6,6 @@ public struct AttackDetails       // instead of being a public class, change cla
 {
     public Vector2 position;
     public float damageAmount;
+    public float stunDamageAmount;
 
 }
