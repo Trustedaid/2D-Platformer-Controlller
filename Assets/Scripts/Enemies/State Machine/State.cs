@@ -9,7 +9,7 @@ public class State
 
     protected string animBoolName;
 
-    protected float startTime;
+    public float startTime { get; protected set; }
     public State(Entity entity, FiniteStateMachine stateMachine, string animBoolName)
     {
         this.entity = entity;
