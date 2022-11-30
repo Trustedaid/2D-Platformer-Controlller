@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 38e848d0edf725a4da32396017d0020b
+guid: 8e41ca534635be448acca61015ab4c60
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -116,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character 1 - RogueLedgeClimb_0
+      name: Idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ef3ef215d93dcb4a81122c79a2841ee
-      internalID: -458381354
+      spriteID: 9a98af0c3d5dbf74ea2372951015d809
+      internalID: 757409313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character 1 - RogueLedgeClimb_1
+      name: Idle_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
-        width: 128
-        height: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19128a2abcbd8dd43a3d61577da4c407
-      internalID: -167110962
+      spriteID: fdfdba226a0f11143a3fb5c2a9a658db
+      internalID: 1162167600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character 1 - RogueLedgeClimb_2
+      name: Idle_2
       rect:
         serializedVersion: 2
-        x: 257
+        x: 64
         y: 0
-        width: 128
-        height: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0b935f642cf49f48876a06bad04b21b
-      internalID: 1562501537
+      spriteID: ea60e124575de6a49bf97b5f49935e0f
+      internalID: 1628714482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character 1 - RogueLedgeClimb_3
+      name: Idle_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 96
         y: 0
-        width: 128
-        height: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,50 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5cad170b435ffd4580492fc06aaa2b4
-      internalID: 1734757980
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character 1 - RogueLedgeClimb_4
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db0f2844f9174964b97bfd4d28286c5f
-      internalID: -922679981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character 1 - RogueLedgeClimb_5
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a560876adc790a47ad352171d40baff
-      internalID: 881664524
+      spriteID: 871272d5a7394a849863f2b30232c2ee
+      internalID: 2131834999
       vertices: []
       indices: 
       edges: []
@@ -252,12 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character 1 - RogueLedgeClimb_2: 1562501537
-      Character 1 - RogueLedgeClimb_4: -922679981
-      Character 1 - RogueLedgeClimb_5: 881664524
-      Character 1 - RogueLedgeClimb_1: -167110962
-      Character 1 - RogueLedgeClimb_0: -458381354
-      Character 1 - RogueLedgeClimb_3: 1734757980
+      Idle_1: 1162167600
+      Idle_3: 2131834999
+      Idle_0: 757409313
+      Idle_2: 1628714482
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
