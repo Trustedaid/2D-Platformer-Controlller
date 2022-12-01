@@ -12,7 +12,7 @@ public class PlayerState
     protected float startTime;
     private string animBoolName;
 
-    public PlayerState(Player player, PlayerStateMachine stateMachine,PlayerData playerData, string animBoolName)
+    public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName)
     {
         this.player = player;
         this.stateMachine = stateMachine;
@@ -53,5 +53,5 @@ public class PlayerState
         isAnimationFinished = true;
     }
 
-  
+
 }
