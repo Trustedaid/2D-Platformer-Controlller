@@ -81,12 +81,20 @@ public class PlayerInAirState : PlayerState
         dashInput = player.InputHandler.DashInput;
 
         CheckJumpMultiplier();
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary])
+        {
+            stateMachine.ChangeState(player.PrimaryAttackState);
+        }
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
+        {
+            stateMachine.ChangeState(player.SecondaryAttackState);
+        }
 
-        if (isGrounded && player.CurrentVelocity.y < 0.01f) //FIXME: isGrounded not working -- FIXED 
+        else if (isGrounded && player.CurrentVelocity.y < 0.01f) //FIXME: isGrounded not working -- FIXED 
         {
             stateMachine.ChangeState(player.LandState);
         }
-        else if ( isTouchingWall&& !isTouchingLedge && !isGrounded)
+        else if (isTouchingWall && !isTouchingLedge && !isGrounded)
         {
             stateMachine.ChangeState(player.LedgeClimbState);
         }
@@ -111,7 +119,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.WallSlideState);
         }
-        else if ( dashInput && player.DashState.CheckIfCanDash())
+        else if (dashInput && player.DashState.CheckIfCanDash())
         {
             stateMachine.ChangeState(player.DashState);
         }

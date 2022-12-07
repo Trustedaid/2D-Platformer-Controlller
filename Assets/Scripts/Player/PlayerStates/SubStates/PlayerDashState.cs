@@ -84,6 +84,7 @@ public class PlayerDashState : PlayerAbilityState
 
                 if (Time.time >= startTime + playerData.dashTime)
                 {
+                   
                     player.RB.drag = 0f;
                     isAbilityDone = true;
                     lastDashTime = Time.time;
