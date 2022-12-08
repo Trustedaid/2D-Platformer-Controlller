@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatTestDummy : MonoBehaviour
+public class CombatTestDummy : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject hitParticles;
 

@@ -15,12 +15,12 @@ public class PlayerLandState : PlayerGroundedState
         {
             if (xInput != 0)
             {
-                Debug.Log("deneme1");
+                //Debug.Log("deneme1");
                 stateMachine.ChangeState(player.MoveState);
             }
             else if (isAnimationFinished)
             {
-                Debug.Log("land animasyonu bitti");
+               // Debug.Log("land animasyonu bitti");
                 stateMachine.ChangeState(player.IdleState);
             }
 

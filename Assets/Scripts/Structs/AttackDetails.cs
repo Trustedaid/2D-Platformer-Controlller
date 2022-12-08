@@ -9,3 +9,10 @@ public struct AttackDetails       // instead of being a public class, change cla
     public float stunDamageAmount;
 
 }
+[System.Serializable]
+public struct WeaponAttackDetails
+{
+    public string attackName;
+    public float movementSpeed;
+    public float damageAmount;
+}
