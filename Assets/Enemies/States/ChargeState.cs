@@ -33,7 +33,7 @@ public class ChargeState : State
         isChargeTimeOver = false;
         entity.SetVelocity(stateData.chargeSpeed);
 
-       
+
     }
 
     public override void Exit()
@@ -49,7 +49,7 @@ public class ChargeState : State
             isChargeTimeOver = true;
         }
     }
-   
+
 
     public override void PhysicsUpdate()
     {
@@ -57,5 +57,5 @@ public class ChargeState : State
 
     }
 }
-    
+
 
