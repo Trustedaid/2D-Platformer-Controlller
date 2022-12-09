@@ -6,15 +6,18 @@ public class State
 {
     protected FiniteStateMachine stateMachine;
     protected Entity entity;
-
-    protected string animBoolName;
+    protected Core core;
 
     public float startTime { get; protected set; }
+    protected string animBoolName;
+
+
     public State(Entity entity, FiniteStateMachine stateMachine, string animBoolName)
     {
         this.entity = entity;
         this.stateMachine = stateMachine;
         this.animBoolName = animBoolName;
+        core = entity.Core;
     }
     public virtual void Enter() // means that this function can be redefined in the derived classes 
     {

@@ -32,7 +32,7 @@ public class E1_ChargeState : ChargeState
         {
             stateMachine.ChangeState(enemy.meleeAttackState);
         }
-        else if (!isDetectedLedge || isDetectingWall)
+        else if (!isDetectingLedge || isDetectingWall)
         {
             stateMachine.ChangeState(enemy.lookForPlayerState);
         }

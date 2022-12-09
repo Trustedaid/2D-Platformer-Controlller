@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AggresiveWeapon : Weapon
 {
@@ -17,6 +18,7 @@ public class AggresiveWeapon : Weapon
         }
         else
         {
+            Debug.LogError("Wrong data for the weapon");
         }
     }
 
@@ -28,7 +30,8 @@ public class AggresiveWeapon : Weapon
     private void CheckMeleeAttack()
     {
         WeaponAttackDetails details = aggresiveWeaponData.AttackDetails[attackCounter];
-        foreach (IDamageable item in detectedDamageable)
+        
+        foreach (IDamageable item in detectedDamageable.ToList())
         {
             item.Damage(details.damageAmount);
         }
