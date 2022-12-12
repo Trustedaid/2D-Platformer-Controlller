@@ -5,7 +5,8 @@ using UnityEngine;
 public class E2_PlayerDetectedState : PlayerDetectedState
 {
     private Enemy2 enemy;
-    public E2_PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetected stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
+
+    public E2_PlayerDetectedState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetected stateData, Enemy2 enemy) : base(etity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -55,4 +56,3 @@ public class E2_PlayerDetectedState : PlayerDetectedState
         base.PhysicsUpdate();
     }
 }
-

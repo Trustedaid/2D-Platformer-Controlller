@@ -8,6 +8,4 @@ public class ParticleController : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-
 }

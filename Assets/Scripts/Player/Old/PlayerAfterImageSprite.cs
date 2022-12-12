@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlayerAfterImageSprite : MonoBehaviour
 {
-    [SerializeField]  // able to change active time in alpha
+    [SerializeField]
     private float activeTime = 0.1f;
     private float timeActivated;
     private float alpha;
     [SerializeField]
     private float alphaSet = 0.8f;
     [SerializeField]
-    private float alphaDecay = 0.85f; // smaller numbers are faster sprite the fade (decreasing alpha over time)
-
+    private float alphaDecay = 0.85f;
 
     private Transform player;
 
@@ -33,16 +32,17 @@ public class PlayerAfterImageSprite : MonoBehaviour
         transform.rotation = player.rotation;
         timeActivated = Time.time;
     }
+
     private void Update()
     {
-        alpha -= alphaDecay * Time.time;
+        alpha -= alphaDecay * Time.deltaTime;
         color = new Color(1f, 1f, 1f, alpha);
         SR.color = color;
-        if(Time.time >= (timeActivated + activeTime))
+
+        if (Time.time >= (timeActivated + activeTime))
         {
             PlayerAfterImagePool.Instance.AddToPool(gameObject);
         }
-        
-    }
 
+    }
 }

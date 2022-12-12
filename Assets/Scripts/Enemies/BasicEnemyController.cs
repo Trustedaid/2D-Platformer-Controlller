@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
 {
-   private enum State // \\  state machine == bunch of predefined states that we'll use to determine what behaviors the enemy must have  //
-                      //   \ provides to expand on the enemy later and add more behaviors more states to it ------------------------------/
+    private enum State // \\  state machine == bunch of predefined states that we'll use to determine what behaviors the enemy must have  //
+                       //   \ provides to expand on the enemy later and add more behaviors more states to it ------------------------------/
     {
         Moving,
         Knockback,
         Dead
     }
+
     private State currentState;
 
     [SerializeField]
@@ -31,10 +32,9 @@ public class BasicEnemyController : MonoBehaviour
         wallCheck,
         touchDamageCheck;
     [SerializeField]
-   private LayerMask 
+    private LayerMask
         whatIsGround,
         whatIsPlayer;
-
     [SerializeField]
     private Vector2 knockbackSpeed;
     [SerializeField]
@@ -43,17 +43,17 @@ public class BasicEnemyController : MonoBehaviour
         deathChunkParticle,
         deathBloodParticle;
 
-
-    private float currentHealth,
+    private float
+        currentHealth,
         knockbackStartTime;
 
     private float[] attackDetails = new float[2];
 
-    private int 
+    private int
         facingDirection,
         damageDirection;
 
-    private Vector2 
+    private Vector2
         movement,
         touchDamageBotLeft,
         touchDamageTopRight;
@@ -61,6 +61,7 @@ public class BasicEnemyController : MonoBehaviour
     private bool
         groundDetected,
         wallDetected;
+
     private GameObject alive;
     private Rigidbody2D aliveRb;
     private Animator aliveAnim;
@@ -69,15 +70,15 @@ public class BasicEnemyController : MonoBehaviour
     {
         alive = transform.Find("Alive").gameObject;
         aliveRb = alive.GetComponent<Rigidbody2D>();
+        aliveAnim = alive.GetComponent<Animator>();
 
         currentHealth = maxHealth;
         facingDirection = 1;
-        aliveAnim = alive.GetComponent<Animator>();
     }
 
     private void Update()
     {
-        switch(currentState)
+        switch (currentState)
         {
             case State.Moving:
                 UpdateMovingState();
@@ -88,15 +89,16 @@ public class BasicEnemyController : MonoBehaviour
             case State.Dead:
                 UpdateDeadState();
                 break;
-
         }
     }
 
-    // MOVING STATE----------------------------------------------------------------------------------------------
+    //--WALKING STATE--------------------------------------------------------------------------------
+
     private void EnterMovingState()
     {
 
     }
+
     private void UpdateMovingState()
     {
         groundDetected = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
@@ -104,23 +106,24 @@ public class BasicEnemyController : MonoBehaviour
 
         CheckTouchDamage();
 
-        if(!groundDetected || wallDetected)
+        if (!groundDetected || wallDetected)
         {
             Flip();
-            //Flip
         }
         else
         {
-            //Move
             movement.Set(movementSpeed * facingDirection, aliveRb.velocity.y);
             aliveRb.velocity = movement;
         }
     }
+
     private void ExitMovingState()
     {
 
     }
-    // KNOCKBACK STATE----------------------------------------------------------------------------------------------
+
+    //--KNOCKBACK STATE-------------------------------------------------------------------------------
+
     private void EnterKnockbackState()
     {
         knockbackStartTime = Time.time;
@@ -128,38 +131,45 @@ public class BasicEnemyController : MonoBehaviour
         aliveRb.velocity = movement;
         aliveAnim.SetBool("Knockback", true);
     }
+
     private void UpdateKnockbackState()
     {
-        if(Time.time >= knockbackStartTime + knockbackDuration)
+        if (Time.time >= knockbackStartTime + knockbackDuration)
         {
             SwitchState(State.Moving);
         }
     }
+
     private void ExitKnockbackState()
     {
         aliveAnim.SetBool("Knockback", false);
     }
-    //  DEAD STATE------------------------------------------------------------------------------------------------
-    private void EnterDeadState()
+
+    //--DEAD STATE---------------------------------------------------------------------------------------
+
+    private void EnterDeadState() // Spawn Chunks and Blood Particle
     {
-        // Spawn Chunks and Blood Particle
         Instantiate(deathChunkParticle, alive.transform.position, deathChunkParticle.transform.rotation);
         Instantiate(deathBloodParticle, alive.transform.position, deathBloodParticle.transform.rotation);
         Destroy(gameObject);
-
     }
+
     private void UpdateDeadState()
     {
 
     }
+
     private void ExitDeadState()
     {
 
     }
-    // OTHER FUNCTIONS---------------------------------------------------------------------------------------------
-   private void Damage(float[]attackDetails) // IF we need multiple parameters we need to use like this instead of     " sending message function [allows 1 parameter] "
+
+    //--OTHER FUNCTIONS--------------------------------------------------------------------------------
+
+    private void Damage(float[] attackDetails)
     {
         currentHealth -= attackDetails[0];
+
         Instantiate(hitParticle, alive.transform.position, Quaternion.Euler(0.0f, 0.0f, Random.Range(0.0f, 360.0f)));
 
         if (attackDetails[1] > alive.transform.position.x)
@@ -170,26 +180,29 @@ public class BasicEnemyController : MonoBehaviour
         {
             damageDirection = 1;
         }
-        
-        // Hit particle
-        if(currentHealth > 0.0f)
+
+        //Hit particle
+
+        if (currentHealth > 0.0f)
         {
             SwitchState(State.Knockback);
         }
-        else if(currentHealth <= 0.0f)
+        else if (currentHealth <= 0.0f)
         {
             SwitchState(State.Dead);
         }
     }
+
     private void CheckTouchDamage()
     {
-        if(Time.time >= lastTouchDamageTime + touchDamageCooldown)
+        if (Time.time >= lastTouchDamageTime + touchDamageCooldown)
         {
             touchDamageBotLeft.Set(touchDamageCheck.position.x - (touchDamageWidth / 2), touchDamageCheck.position.y - (touchDamageHeight / 2));
             touchDamageTopRight.Set(touchDamageCheck.position.x + (touchDamageWidth / 2), touchDamageCheck.position.y + (touchDamageHeight / 2));
 
             Collider2D hit = Physics2D.OverlapArea(touchDamageBotLeft, touchDamageTopRight, whatIsPlayer);
-            if(hit != null)
+
+            if (hit != null)
             {
                 lastTouchDamageTime = Time.time;
                 attackDetails[0] = touchDamage;
@@ -199,15 +212,16 @@ public class BasicEnemyController : MonoBehaviour
         }
     }
 
-
     private void Flip()
     {
         facingDirection *= -1;
         alive.transform.Rotate(0.0f, 180.0f, 0.0f);
+
     }
+
     private void SwitchState(State state)
     {
-        switch(currentState)
+        switch (currentState)
         {
             case State.Moving:
                 ExitMovingState();
@@ -218,8 +232,8 @@ public class BasicEnemyController : MonoBehaviour
             case State.Dead:
                 ExitDeadState();
                 break;
-
         }
+
         switch (state)
         {
             case State.Moving:
@@ -232,9 +246,10 @@ public class BasicEnemyController : MonoBehaviour
                 EnterDeadState();
                 break;
         }
+
         currentState = state;
-       
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
@@ -249,6 +264,7 @@ public class BasicEnemyController : MonoBehaviour
         Gizmos.DrawLine(botRight, topRight);
         Gizmos.DrawLine(topRight, topLeft);
         Gizmos.DrawLine(topLeft, botLeft);
-
     }
+
 }
+

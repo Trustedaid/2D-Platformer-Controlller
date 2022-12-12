@@ -5,7 +5,8 @@ using UnityEngine;
 public class E2_IdleState : IdleState
 {
     private Enemy2 enemy;
-    public E2_IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, stateData)
+
+    public E2_IdleState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData, Enemy2 enemy) : base(etity, stateMachine, animBoolName, stateData)
     {
         this.enemy = enemy;
     }
@@ -33,7 +34,6 @@ public class E2_IdleState : IdleState
         {
             stateMachine.ChangeState(enemy.playerDetectedState);
         }
-
         else if (isIdleTimeOver)
         {
             stateMachine.ChangeState(enemy.moveState);

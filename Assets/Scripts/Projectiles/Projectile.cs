@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private AttackDetails attackDetails;
+    //private AttackDetails attackDetails;
 
     private float speed;
     private float travelDistance;
@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
     private LayerMask whatIsPlayer;
     [SerializeField]
     private Transform damagePosition;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,11 +38,13 @@ public class Projectile : MonoBehaviour
 
         xStartPos = transform.position.x;
     }
+
     private void Update()
     {
         if (!hasHitGround)
         {
-            attackDetails.position = transform.position;
+            //attackDetails.position = transform.position;
+
             if (isGravityOn)
             {
                 float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
@@ -59,9 +62,10 @@ public class Projectile : MonoBehaviour
 
             if (damageHit)
             {
-                damageHit.transform.SendMessage("Damage", attackDetails);
+                //damageHit.transform.SendMessage("Damage", attackDetails);
                 Destroy(gameObject);
             }
+
             if (groundHit)
             {
                 hasHitGround = true;
@@ -69,25 +73,24 @@ public class Projectile : MonoBehaviour
                 rb.velocity = Vector2.zero;
             }
 
+
             if (Mathf.Abs(xStartPos - transform.position.x) >= travelDistance && !isGravityOn)
             {
                 isGravityOn = true;
                 rb.gravityScale = gravity;
             }
         }
-
     }
 
     public void FireProjectile(float speed, float travelDistance, float damage)
     {
         this.speed = speed;
         this.travelDistance = travelDistance;
-        attackDetails.damageAmount = damage;
+        //attackDetails.damageAmount = damage;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(damagePosition.position, damageRadius);
-
     }
 }

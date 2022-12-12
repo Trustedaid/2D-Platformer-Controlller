@@ -31,7 +31,7 @@ public class Enemy2 : Entity
     [SerializeField]
     public D_DodgeState dodgeStateData;
     [SerializeField]
-    public D_RangedAttackState rangedAttackStateData;
+    private D_RangedAttackState rangedAttackStateData;
 
     [SerializeField]
     private Transform meleeAttackPosition;
@@ -52,34 +52,11 @@ public class Enemy2 : Entity
         dodgeState = new E2_DodgeState(this, stateMachine, "dodge", dodgeStateData, this);
         rangedAttackState = new E2_RangedAttackState(this, stateMachine, "rangedAttack", rangedAttackPosition, rangedAttackStateData, this);
 
-
     }
+
     private void Start()
     {
         stateMachine.Initialize(moveState);
-    }
-
-    public override void Damage(AttackDetails attackDetails)
-    {
-        base.Damage(attackDetails);
-        if (isDead)
-        {
-            stateMachine.ChangeState(deadState);
-        }
-
-        else if (isStunned && stateMachine.currentState != stunState)
-        {
-            stateMachine.ChangeState(stunState);
-        }
-        else if (CheckPlayerInMinAgroRange())
-        {
-            stateMachine.ChangeState(rangedAttackState);
-        }
-        else if (!CheckPlayerInMinAgroRange())
-        {
-            lookForPlayerState.SetTurnImmediately(true);
-            stateMachine.ChangeState(lookForPlayerState);
-        }
     }
 
     public override void OnDrawGizmos()

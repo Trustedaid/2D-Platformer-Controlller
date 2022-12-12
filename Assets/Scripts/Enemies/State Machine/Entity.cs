@@ -13,7 +13,6 @@ public class Entity : MonoBehaviour
     public int lastDamageDirection { get; private set; }
     public Core Core { get; private set; }
 
-
     [SerializeField]
     private Transform wallCheck;
     [SerializeField]
@@ -36,35 +35,38 @@ public class Entity : MonoBehaviour
     {
         Core = GetComponentInChildren<Core>();
 
-
         currentHealth = entityData.maxHealth;
         currentStunResistance = entityData.stunResistance;
-
 
         anim = GetComponent<Animator>();
         atsm = GetComponent<AnimationToStatemachine>();
 
         stateMachine = new FiniteStateMachine();
     }
+
     public virtual void Update()
     {
         Core.LogicUpdate();
         stateMachine.currentState.LogicUpdate();
+
         anim.SetFloat("yVelocity", Core.Movement.RB.velocity.y);
+
         if (Time.time >= lastDamageTime + entityData.stunRecoveryTime)
         {
             ResetStunResistance();
         }
     }
+
     public virtual void FixedUpdate()
     {
         stateMachine.currentState.PhysicsUpdate();
-
     }
+
     public virtual bool CheckPlayerInMinAgroRange()
     {
         return Physics2D.Raycast(playerCheck.position, transform.right, entityData.minAgroDistance, entityData.whatIsPlayer);
     }
+
     public virtual bool CheckPlayerInMaxAgroRange()
     {
         return Physics2D.Raycast(playerCheck.position, transform.right, entityData.maxAgroDistance, entityData.whatIsPlayer);
@@ -86,43 +88,11 @@ public class Entity : MonoBehaviour
         isStunned = false;
         currentStunResistance = entityData.stunResistance;
     }
-    public virtual void Damage(AttackDetails attackDetails)
-    {
-        lastDamageTime = Time.time;
-
-        currentHealth -= attackDetails.damageAmount;
-        currentStunResistance -= attackDetails.stunDamageAmount;
-
-        DamageHop(entityData.damageHopSpeed);
-
-        Instantiate(entityData.hitParticle, transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
-
-        if (attackDetails.position.x > transform.position.x)
-        {
-            lastDamageDirection = -1;
-        }
-        else
-        {
-            lastDamageDirection = 1;
-        }
-
-        if (currentStunResistance <= 0)
-        {
-            isStunned = true;
-        }
-        if (currentHealth <= 0)
-        {
-            isDead = true;
-        }
-    }
-
 
     public virtual void OnDrawGizmos()
     {
-
         if (Core != null)
         {
-
             Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * Core.Movement.FacingDirection * entityData.wallCheckDistance));
             Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckDistance));
 

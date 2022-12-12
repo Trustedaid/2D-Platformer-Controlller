@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
-
     #region State Variables
     public PlayerStateMachine StateMachine { get; private set; }
 
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
-
     public PlayerInAirState InAirState { get; private set; }
     public PlayerLandState LandState { get; private set; }
-
     public PlayerWallSlideState WallSlideState { get; private set; }
     public PlayerWallGrabState WallGrabState { get; private set; }
     public PlayerWallClimbState WallClimbState { get; private set; }
@@ -38,18 +36,14 @@ public class Player : MonoBehaviour
     public Transform DashDirectionIndicator { get; private set; }
     public BoxCollider2D MovementCollider { get; private set; }
     public PlayerInventory Inventory { get; private set; }
-
-
     #endregion
 
+    #region Other Variables         
 
-
-    #region Other Variables
     private Vector2 workspace;
     #endregion
 
     #region Unity Callback Functions
-
     private void Awake()
     {
         Core = GetComponentInChildren<Core>();
@@ -71,8 +65,8 @@ public class Player : MonoBehaviour
         CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchMove");
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack");
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack");
-
     }
+
     private void Start()
     {
         Anim = GetComponent<Animator>();
@@ -82,29 +76,25 @@ public class Player : MonoBehaviour
         MovementCollider = GetComponent<BoxCollider2D>();
         Inventory = GetComponent<PlayerInventory>();
 
-
-
         PrimaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.primary]);
-        // SecondaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.primary]);
-
-        //TODO: Initialize statemachine
+        //SecondaryAttackState.SetWeapon(Inventory.weapons[(int)CombatInputs.primary]);
         StateMachine.Initialize(IdleState);
     }
+
     private void Update()
     {
         Core.LogicUpdate();
         StateMachine.CurrentState.LogicUpdate();
-
     }
+
     private void FixedUpdate()
     {
         StateMachine.CurrentState.PhysicsUpdate();
     }
     #endregion
 
-
-
     #region Other Functions
+
     public void SetColliderHeight(float height)
     {
         Vector2 center = MovementCollider.offset;
@@ -116,14 +106,10 @@ public class Player : MonoBehaviour
         MovementCollider.offset = center;
     }
 
-    private void AnimationTrigger()
-    {
-        StateMachine.CurrentState.AnimationTrigger();
-    }
-    private void AnimationFinishTrigger()
-    {
-        StateMachine.CurrentState.AnimationFinishTrigger();
-    }
+    private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
+
+    private void AnimtionFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+
 
     #endregion
 }

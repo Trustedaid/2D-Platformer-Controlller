@@ -4,67 +4,70 @@ using UnityEngine;
 
 public class PlayerWallGrabState : PlayerTouchingWallState
 {
-    private Vector2 holdPosition;
-    public PlayerWallGrabState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-    {
-    }
+	private Vector2 holdPosition;
 
-    public override void AnimationFinishTrigger()
-    {
-        base.AnimationFinishTrigger();
-    }
+	public PlayerWallGrabState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+	{
+	}
 
-    public override void AnimationTrigger()
-    {
-        base.AnimationTrigger();
-    }
+	public override void AnimationFinishTrigger()
+	{
+		base.AnimationFinishTrigger();
+	}
 
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
+	public override void AnimationTrigger()
+	{
+		base.AnimationTrigger();
+	}
 
-    public override void Enter()
-    {
-        base.Enter();
-        
-        holdPosition = player.transform.position;
-        HoldPosition();
-    }
+	public override void DoChecks()
+	{
+		base.DoChecks();
+	}
 
-    public override void Exit()
-    {
-        base.Exit();
-    }
+	public override void Enter()
+	{
+		base.Enter();
 
-    public override void LogicUpdate()
-    {
-        base.LogicUpdate();
-      
-        if (!isExitingState)
-        {
-            HoldPosition();
+		holdPosition = player.transform.position;
 
-            if (yInput > 0)
-            {
-                stateMachine.ChangeState(player.WallClimbState);
-            }
-            else if (yInput < 0 || !grabInput)
-            {
-                stateMachine.ChangeState(player.WallSlideState);
-            }
-        }
-    }
+		HoldPosition();
+	}
 
-    private void HoldPosition()
-    {
-        player.transform.position = holdPosition;
-       core.Movement.SetVelocityX(0f);
-       core.Movement.SetVelocityY(0f);
-    }
+	public override void Exit()
+	{
+		base.Exit();
+	}
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
+	public override void LogicUpdate()
+	{
+		base.LogicUpdate();
+
+		if (!isExitingState)
+		{
+			HoldPosition();
+
+			if (yInput > 0)
+			{
+				stateMachine.ChangeState(player.WallClimbState);
+			}
+			else if (yInput < 0 || !grabInput)
+			{
+				stateMachine.ChangeState(player.WallSlideState);
+			}
+		}
+	}
+
+	private void HoldPosition()
+	{
+		player.transform.position = holdPosition;
+
+		Movement?.SetVelocityX(0f);
+		Movement?.SetVelocityY(0f);
+	}
+
+	public override void PhysicsUpdate()
+	{
+		base.PhysicsUpdate();
+	}
 }

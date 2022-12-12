@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class E2_MeleeAttackState : MeleeAttackState
 {
-    public Enemy2 enemy;
-    public E2_MeleeAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttack stateData, Enemy2 enemy) : base(entity, stateMachine, animBoolName, attackPosition, stateData)
+    private Enemy2 enemy;
+    public E2_MeleeAttackState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_MeleeAttack stateData, Enemy2 enemy) : base(etity, stateMachine, animBoolName, attackPosition, stateData)
     {
         this.enemy = enemy;
     }
@@ -33,6 +33,7 @@ public class E2_MeleeAttackState : MeleeAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
         if (isAnimationFinished)
         {
             if (isPlayerInMinAgroRange)

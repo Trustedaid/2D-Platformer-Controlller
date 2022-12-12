@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class PlayerWallSlideState : PlayerTouchingWallState
 {
-    public PlayerWallSlideState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-    {
-    }
-    public override void LogicUpdate()
-    {
-        base.LogicUpdate();
-        if (!isExitingState)
-        {
+	public PlayerWallSlideState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+	{
+	}
 
-           core.Movement.SetVelocityY(-playerData.wallSlideVelocity);
+	public override void LogicUpdate()
+	{
+		base.LogicUpdate();
 
-            if (grabInput && yInput == 0)
-            {
-                stateMachine.ChangeState(player.WallGrabState);
-            }
+		if (!isExitingState)
+		{
+			Movement?.SetVelocityY(-playerData.wallSlideVelocity);
 
-        }
-    }
+			if (grabInput && yInput == 0)
+			{
+				stateMachine.ChangeState(player.WallGrabState);
+			}
+		}
+
+	}
 }
