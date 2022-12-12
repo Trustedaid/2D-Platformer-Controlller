@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -104,12 +104,12 @@ public class Player : MonoBehaviour
 
         MovementCollider.size = workspace;
         MovementCollider.offset = center;
-    }
+    }   
 
     private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
 
     private void AnimtionFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
-
+   
     #endregion
 }

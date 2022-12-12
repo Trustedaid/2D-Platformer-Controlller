@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,8 @@ public class RangedAttackState : AttackState
 
     protected GameObject projectile;
     protected Projectile projectileScript;
-    public RangedAttackState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangedAttackState stateData) : base(entity, stateMachine, animBoolName, attackPosition)
+
+    public RangedAttackState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, Transform attackPosition, D_RangedAttackState stateData) : base(etity, stateMachine, animBoolName, attackPosition)
     {
         this.stateData = stateData;
     }
@@ -33,7 +34,7 @@ public class RangedAttackState : AttackState
         base.FinishAttack();
     }
 
-    public override void LogicUpdate() 
+    public override void LogicUpdate()
     {
         base.LogicUpdate();
     }
@@ -47,7 +48,7 @@ public class RangedAttackState : AttackState
     {
         base.TriggerAttack();
 
-        projectile = GameObject.Instantiate(stateData.projectile, attackPosition.position, attackPosition.rotation); // Instantiateing because not inheriting from monobehavior
+        projectile = GameObject.Instantiate(stateData.projectile, attackPosition.position, attackPosition.rotation);
         projectileScript = projectile.GetComponent<Projectile>();
         projectileScript.FireProjectile(stateData.projectileSpeed, stateData.projectileTravelDistance, stateData.projectileDamage);
     }

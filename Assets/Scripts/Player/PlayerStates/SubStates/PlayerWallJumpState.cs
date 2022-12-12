@@ -1,17 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallJumpState : PlayerAbilityState
-{
+public class PlayerWallJumpState : PlayerAbilityState {
 	private int wallJumpDirection;
 
-	public PlayerWallJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-	{
+	public PlayerWallJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName) {
 	}
 
-	public override void Enter()
-	{
+	public override void Enter() {
 		base.Enter();
 		player.InputHandler.UseJumpInput();
 		player.JumpState.ResetAmountOfJumpsLeft();
@@ -20,27 +17,21 @@ public class PlayerWallJumpState : PlayerAbilityState
 		player.JumpState.DecreaseAmountOfJumpsLeft();
 	}
 
-	public override void LogicUpdate()
-	{
+	public override void LogicUpdate() {
 		base.LogicUpdate();
 
 		player.Anim.SetFloat("yVelocity", Movement.CurrentVelocity.y);
 		player.Anim.SetFloat("xVelocity", Mathf.Abs(Movement.CurrentVelocity.x));
 
-		if (Time.time >= startTime + playerData.wallJumpTime)
-		{
+		if (Time.time >= startTime + playerData.wallJumpTime) {
 			isAbilityDone = true;
 		}
 	}
 
-	public void DetermineWallJumpDirection(bool isTouchingWall)
-	{
-		if (isTouchingWall)
-		{
+	public void DetermineWallJumpDirection(bool isTouchingWall) {
+		if (isTouchingWall) {
 			wallJumpDirection = -Movement.FacingDirection;
-		}
-		else
-		{
+		} else {
 			wallJumpDirection = Movement.FacingDirection;
 		}
 	}

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +33,7 @@ public class Movement : CoreComponent
 
     public void SetVelocityZero()
     {
-        workspace = Vector2.zero;
+        workspace = Vector2.zero;        
         SetFinalVelocity();
     }
 
@@ -68,7 +68,7 @@ public class Movement : CoreComponent
         {
             RB.velocity = workspace;
             CurrentVelocity = workspace;
-        }
+        }        
     }
 
     public void CheckIfShouldFlip(int xInput)

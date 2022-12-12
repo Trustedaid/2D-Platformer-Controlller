@@ -1,10 +1,4 @@
-
-/* 
- *  OLD VERSION NOTES
- * aliveGO = transform.Find("Alive").gameObject; // instead of looking through the whole hiearachy it will just look at the children game objects of the object
- brokenTopGO = transform.Find("Broken Top").gameObject;  // instead of looking through the whole hiearachy it will just look at the children game objects of the object
- brokenBotGO = transform.Find("Broken Bottom").gameObject; // instead of looking through the whole hiearachy it will just look at the children game objects of the object */
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,7 +45,7 @@ public class CombatDummyController : MonoBehaviour
     private void Update()
     {
         CheckKnockback();
-    }
+    }    
 
     private void Knockback()
     {
@@ -62,7 +56,7 @@ public class CombatDummyController : MonoBehaviour
 
     private void CheckKnockback()
     {
-        if (Time.time >= knockbackStart + knockbackDuration && knockback)
+        if(Time.time >= knockbackStart + knockbackDuration && knockback)
         {
             knockback = false;
             rbAlive.velocity = new Vector2(0.0f, rbAlive.velocity.y);

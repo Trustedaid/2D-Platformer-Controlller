@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class PlayerCombatController : MonoBehaviour
     //private Transform attack1HitBoxPos;
     //[SerializeField]
     //private LayerMask whatIsDamageable;
-
+    
     //private bool gotInput, isAttacking, isFirstAttack;
 
     //private float lastInputTime = Mathf.NegativeInfinity;
@@ -123,4 +123,5 @@ public class PlayerCombatController : MonoBehaviour
     //{
     //    Gizmos.DrawWireSphere(attack1HitBoxPos.position, attack1Radius);
     //}
+
 }

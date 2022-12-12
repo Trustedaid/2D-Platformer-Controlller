@@ -1,9 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTouchingWallState : PlayerState
-{
+public class PlayerTouchingWallState : PlayerState {
 
 	protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
 	private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
@@ -20,49 +19,40 @@ public class PlayerTouchingWallState : PlayerState
 	protected int xInput;
 	protected int yInput;
 
-	public PlayerTouchingWallState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-	{
+	public PlayerTouchingWallState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName) {
 	}
 
-	public override void AnimationFinishTrigger()
-	{
+	public override void AnimationFinishTrigger() {
 		base.AnimationFinishTrigger();
 	}
 
-	public override void AnimationTrigger()
-	{
+	public override void AnimationTrigger() {
 		base.AnimationTrigger();
 	}
 
-	public override void DoChecks()
-	{
+	public override void DoChecks() {
 		base.DoChecks();
 
-		if (CollisionSenses)
-		{
+		if (CollisionSenses) {
 			isGrounded = CollisionSenses.Ground;
 			isTouchingWall = CollisionSenses.WallFront;
 			isTouchingLedge = CollisionSenses.LedgeHorizontal;
 		}
 
-		if (isTouchingWall && !isTouchingLedge)
-		{
+		if (isTouchingWall && !isTouchingLedge) {
 			player.LedgeClimbState.SetDetectedPosition(player.transform.position);
 		}
 	}
 
-	public override void Enter()
-	{
+	public override void Enter() {
 		base.Enter();
 	}
 
-	public override void Exit()
-	{
+	public override void Exit() {
 		base.Exit();
 	}
 
-	public override void LogicUpdate()
-	{
+	public override void LogicUpdate() {
 		base.LogicUpdate();
 
 		xInput = player.InputHandler.NormInputX;
@@ -70,27 +60,19 @@ public class PlayerTouchingWallState : PlayerState
 		grabInput = player.InputHandler.GrabInput;
 		jumpInput = player.InputHandler.JumpInput;
 
-		if (jumpInput)
-		{
+		if (jumpInput) {
 			player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
 			stateMachine.ChangeState(player.WallJumpState);
-		}
-		else if (isGrounded && !grabInput)
-		{
+		} else if (isGrounded && !grabInput) {
 			stateMachine.ChangeState(player.IdleState);
-		}
-		else if (!isTouchingWall || (xInput != Movement?.FacingDirection && !grabInput))
-		{
+		} else if (!isTouchingWall || (xInput != Movement?.FacingDirection && !grabInput)) {
 			stateMachine.ChangeState(player.InAirState);
-		}
-		else if (isTouchingWall && !isTouchingLedge)
-		{
+		} else if (isTouchingWall && !isTouchingLedge) {
 			stateMachine.ChangeState(player.LedgeClimbState);
 		}
 	}
 
-	public override void PhysicsUpdate()
-	{
+	public override void PhysicsUpdate() {
 		base.PhysicsUpdate();
 	}
 }

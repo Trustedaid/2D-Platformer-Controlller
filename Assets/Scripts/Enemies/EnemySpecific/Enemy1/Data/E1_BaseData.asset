@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60b33c351ed79947946138663a7cd39, type: 3}
+  m_Script: {fileID: 11500000, guid: 8616551fadf786b468748b4b85698cb9, type: 3}
   m_Name: E1_BaseData
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   damageHopSpeed: 10
   wallCheckDistance: 0.2
   ledgeCheckDistance: 1
@@ -22,10 +22,11 @@ MonoBehaviour:
   stunResistance: 3
   stunRecoveryTime: 2
   closeRangeActionDistance: 1.75
-  hitParticle: {fileID: 2110218145912549827, guid: 3f4847e7a9348d34fb527b9ec624d218, type: 3}
+  hitParticle: {fileID: 6240072112886026631, guid: d3ad3f1375e0d114ca19695641fceb61,
+    type: 3}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2048

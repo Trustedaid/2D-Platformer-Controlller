@@ -1,9 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAbilityState : PlayerState
-{
+public class PlayerAbilityState : PlayerState {
 	protected bool isAbilityDone;
 
 	protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
@@ -14,51 +13,40 @@ public class PlayerAbilityState : PlayerState
 
 	private bool isGrounded;
 
-	public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-	{
+	public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName) {
 	}
 
-	public override void DoChecks()
-	{
+	public override void DoChecks() {
 		base.DoChecks();
 
-		if (CollisionSenses)
-		{
+		if (CollisionSenses) {
 			isGrounded = CollisionSenses.Ground;
 		}
 	}
 
-	public override void Enter()
-	{
+	public override void Enter() {
 		base.Enter();
 
 		isAbilityDone = false;
 	}
 
-	public override void Exit()
-	{
+	public override void Exit() {
 		base.Exit();
 	}
 
-	public override void LogicUpdate()
-	{
+	public override void LogicUpdate() {
 		base.LogicUpdate();
 
-		if (isAbilityDone)
-		{
-			if (isGrounded && Movement?.CurrentVelocity.y < 0.01f)
-			{
+		if (isAbilityDone) {
+			if (isGrounded && Movement?.CurrentVelocity.y < 0.01f) {
 				stateMachine.ChangeState(player.IdleState);
-			}
-			else
-			{
+			} else {
 				stateMachine.ChangeState(player.InAirState);
 			}
 		}
 	}
 
-	public override void PhysicsUpdate()
-	{
+	public override void PhysicsUpdate() {
 		base.PhysicsUpdate();
 	}
 }

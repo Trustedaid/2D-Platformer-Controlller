@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,8 +75,8 @@ public class PlayerInputHandler : MonoBehaviour
         RawMovementInput = context.ReadValue<Vector2>();
 
         NormInputX = Mathf.RoundToInt(RawMovementInput.x);
-        NormInputY = Mathf.RoundToInt(RawMovementInput.y);
-
+        NormInputY = Mathf.RoundToInt(RawMovementInput.y);       
+        
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -125,7 +125,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         RawDashDirectionInput = context.ReadValue<Vector2>();
 
-        if (playerInput.currentControlScheme == "Keyboard")
+        if(playerInput.currentControlScheme == "Keyboard")
         {
             RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
         }
@@ -139,7 +139,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void CheckJumpInputHoldTime()
     {
-        if (Time.time >= jumpInputStartTime + inputHoldTime)
+        if(Time.time >= jumpInputStartTime + inputHoldTime)
         {
             JumpInput = false;
         }
@@ -147,7 +147,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void CheckDashInputHoldTime()
     {
-        if (Time.time >= dashInputStartTime + inputHoldTime)
+        if(Time.time >= dashInputStartTime + inputHoldTime)
         {
             DashInput = false;
         }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        if (attackCounter >= weaponData.amountOfAttacks)
+        if(attackCounter >= weaponData.amountOfAttacks)
         {
             attackCounter = 0;
         }

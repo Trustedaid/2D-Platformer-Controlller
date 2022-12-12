@@ -1,9 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newEntitiyData", menuName = "Data/Entitiy Data/Base Data")]
-
+[CreateAssetMenu(fileName = "newEntityData", menuName = "Data/Entity Data/Base Data")]
 public class D_Entity : ScriptableObject
 {
     public float maxHealth = 30f;
@@ -23,8 +22,6 @@ public class D_Entity : ScriptableObject
     public float closeRangeActionDistance = 1f;
 
     public GameObject hitParticle;
-
-
 
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
