@@ -28,7 +28,7 @@ public class Core : MonoBehaviour
 			CoreComponents.Add(component);
 		}
 	}
-
+	
 	public T GetCoreComponent<T>() where T : CoreComponent
 	{
 		var comp = CoreComponents.OfType<T>().FirstOrDefault();

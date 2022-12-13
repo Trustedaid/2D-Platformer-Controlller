@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponHitboxToWeapon : MonoBehaviour
+public class WeaponHitBoxToWeapon : MonoBehaviour
 {
     private AggressiveWeapon weapon;
 
