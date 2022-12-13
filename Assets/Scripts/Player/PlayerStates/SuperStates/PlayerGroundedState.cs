@@ -87,14 +87,17 @@ public class PlayerGroundedState : PlayerState
         {
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
+            Debug.Log("CoyoteTime, InAirState");
         }
         else if (isTouchingWall && grabInput && isTouchingLedge)
         {
+            Debug.Log("WallGrabState'e geçti");
             stateMachine.ChangeState(player.WallGrabState);
         }
         else if (dashInput && player.DashState.CheckIfCanDash() && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.DashState);
+            Debug.Log("DashState'e geçti");
         }
     }
 

@@ -98,11 +98,13 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started)
         {
+            Debug.Log("OngrabInputTrueDöndü");
             GrabInput = true;
         }
 
         if (context.canceled)
         {
+            Debug.Log("OngrabInputFalseDöndü");
             GrabInput = false;
         }
     }

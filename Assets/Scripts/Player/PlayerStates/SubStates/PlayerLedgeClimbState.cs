@@ -34,6 +34,7 @@ public class PlayerLedgeClimbState : PlayerState
 	{
 		base.AnimationFinishTrigger();
 		player.Anim.SetBool("climbLedge", false);
+		Debug.Log("climbLedge False döndü");
 	}
 
 	public override void AnimationTrigger()
@@ -80,10 +81,12 @@ public class PlayerLedgeClimbState : PlayerState
 			if (isTouchingCeiling)
 			{
 				stateMachine.ChangeState(player.CrouchIdleState);
+				Debug.Log("touching ceiling true , courchIdleState geçti");
 			}
 			else
 			{
 				stateMachine.ChangeState(player.IdleState);
+				Debug.Log("Player Idle'a geçti");
 			}
 		}
 		else
@@ -100,15 +103,18 @@ public class PlayerLedgeClimbState : PlayerState
 				CheckForSpace();
 				isClimbing = true;
 				player.Anim.SetBool("climbLedge", true);
+				Debug.Log("climbLedge true döndü");
 			}
 			else if (yInput == -1 && isHanging && !isClimbing)
 			{
 				stateMachine.ChangeState(player.InAirState);
+				Debug.Log("Tekrar InAirState e geçti");
 			}
 			else if (jumpInput && !isClimbing)
 			{
 				player.WallJumpState.DetermineWallJumpDirection(true);
 				stateMachine.ChangeState(player.WallJumpState);
+				Debug.Log("Wall Jump State'e geçti");
 			}
 		}
 
